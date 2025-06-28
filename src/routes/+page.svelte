@@ -1,5 +1,4 @@
 <script>
-	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
 	import { navigating } from '$app/stores';
 
@@ -7,23 +6,25 @@
 
 	let { data } = $props();
 
-	let name = $state('');
+	let name = $state(data.name || '');
 	let debounceTimer;
-
-	onMount(() => {
-		name = data.name || '';
-	});
 
 	function handleInput() {
 		clearInterval(debounceTimer);
 		debounceTimer = setTimeout(() => {
-			if (name) {
-				goto(`/?name=${name.trim()}`, { keepFocus: true });
-			} else {
-				goto('/', { keepFocus: true });
+			if (name.trim() !== (data.name || '')) {
+				if (name) {
+					goto(`/?name=${name.trim()}`, { keepFocus: true });
+				} else {
+					goto('/', { keepFocus: true });
+				}
 			}
 		}, 1000);
 	}
+
+	$effect(() => {
+		name = data.name || '';
+	});
 </script>
 
 <div class="container">
