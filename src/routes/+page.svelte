@@ -29,7 +29,7 @@
 
 <div class="container">
 	<h1>Informe o nome para estimar a idade!</h1>
-	<span>Digite o nome e espere</span>
+	<span>Digite um nome e aguarde.</span>
 
 	<input
 		type="text"
