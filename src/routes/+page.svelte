@@ -1,8 +1,15 @@
 <script>
+	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+
+	let { data } = $props();
 
 	let name = $state('');
 	let debounceTimer;
+
+	onMount(() => {
+		name = data.name || '';
+	});
 
 	function handleInput() {
 		clearInterval(debounceTimer);
@@ -20,3 +27,9 @@
 <span>Digite apenas o primeiro nome e espere</span>
 
 <input type="text" oninput={handleInput} bind:value={name} autocomplete="off" />
+
+{#if data.age !== null}
+	<p>
+		<strong>{name}</strong> tem <strong>{data.age}</strong> anos
+	</p>
+{/if}
