@@ -1,6 +1,9 @@
 <script>
 	import { onMount } from 'svelte';
 	import { goto } from '$app/navigation';
+	import { navigating } from '$app/stores';
+
+	import Loader from '$lib/components/Loader.svelte';
 
 	let { data } = $props();
 
@@ -35,9 +38,11 @@
 		autocomplete="off"
 	/>
 
-	{#if data.age !== null}
+	{#if $navigating !== null}
+		<Loader />
+	{:else if data.age !== null}
 		<p>
-			<strong>{name}</strong> têm <strong>{data.age}</strong> anos
+			<strong>{data.name}</strong> têm <strong>{data.age}</strong> anos
 		</p>
 	{/if}
 </div>
@@ -82,6 +87,7 @@
 
 		& p {
 			font-size: 1.1rem;
+			height: 40px;
 		}
 	}
 </style>
