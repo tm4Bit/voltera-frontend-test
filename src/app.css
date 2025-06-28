@@ -8,3 +8,8 @@ body,
 html {
 	font-family: 'Space Grotesk', sans-serif;
 }
+
+body {
+	min-height: 100vh;
+	background-color: #e0e0e0;
+}

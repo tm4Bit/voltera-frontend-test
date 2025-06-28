@@ -23,13 +23,65 @@
 	}
 </script>
 
-<h1>Digite o nome para ver a estimativa de anos pelo nome!</h1>
-<span>Digite apenas o primeiro nome e espere</span>
+<div class="container">
+	<h1>Informe o nome para estimar a idade!</h1>
+	<span>Digite o nome e espere</span>
 
-<input type="text" oninput={handleInput} bind:value={name} autocomplete="off" />
+	<input
+		type="text"
+		oninput={handleInput}
+		bind:value={name}
+		placeholder="Fulaninho..."
+		autocomplete="off"
+	/>
 
-{#if data.age !== null}
-	<p>
-		<strong>{name}</strong> tem <strong>{data.age}</strong> anos
-	</p>
-{/if}
+	{#if data.age !== null}
+		<p>
+			<strong>{name}</strong> têm <strong>{data.age}</strong> anos
+		</p>
+	{/if}
+</div>
+
+<style>
+	.container {
+		height: 480px;
+		width: 50%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		border-radius: 50px;
+		background: #e0e0e0;
+		box-shadow:
+			20px 20px 60px #bebebe,
+			-20px -20px 60px #ffffff;
+		& h1 {
+			text-align: center;
+			width: 70%;
+			margin-bottom: 10px;
+		}
+
+		& span {
+			color: #666;
+			margin-bottom: 20px;
+		}
+
+		& input {
+			font-size: 1.2rem;
+			font-family: 'Space Grotesk', sans-serif;
+			width: 250px;
+			max-width: 400px;
+			height: 40px;
+			padding: 0 10px;
+			border-radius: 4px;
+			background: #f2f2f2;
+			border: 1px solid #ccc;
+			outline: none;
+			margin-bottom: 20px;
+		}
+
+		& p {
+			font-size: 1.1rem;
+		}
+	}
+</style>
