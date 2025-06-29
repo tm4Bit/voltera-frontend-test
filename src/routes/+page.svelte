@@ -28,7 +28,7 @@
 </script>
 
 <div class="container">
-	<h1>Informe o nome para estimar a idade!</h1>
+	<h1>ESTIME A IDADE POR UM NOME!</h1>
 	<span>Digite um nome e aguarde.</span>
 
 	<input
@@ -39,56 +39,73 @@
 		autocomplete="off"
 	/>
 
-	{#if $navigating !== null}
-		<Loader />
-	{:else if data.age !== null}
-		<p>
+	<div class="result">
+		{#if $navigating !== null}
+			<Loader />
+		{:else if data.age !== null}
 			<strong>{data.name}</strong> têm <strong>{data.age}</strong> anos
-		</p>
-	{/if}
+		{/if}
+	</div>
 </div>
 
 <style>
 	.container {
-		height: 480px;
-		width: 50%;
+		background: #e0e0e0;
+		height: 400px;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
 		align-items: center;
+		margin: 24px 48px;
 		border-radius: 50px;
-		background: #e0e0e0;
 		box-shadow:
 			20px 20px 60px #bebebe,
 			-20px -20px 60px #ffffff;
+
 		& h1 {
+			font-size: 2.4rem;
 			text-align: center;
-			width: 70%;
-			margin-bottom: 10px;
+			margin: 0 32px 10px 32px;
+			@media (max-width: 600px) {
+				font-size: 1.6rem;
+			}
 		}
 
 		& span {
-			color: #666;
+			font-size: 1.6rem;
+			color: #666666;
 			margin-bottom: 20px;
+			@media (max-width: 600px) {
+				font-size: 1.2rem;
+			}
 		}
 
 		& input {
-			font-size: 1.2rem;
+			font-size: 1.6rem;
 			font-family: 'Space Grotesk', sans-serif;
-			width: 250px;
-			max-width: 400px;
 			height: 40px;
-			padding: 0 10px;
 			border-radius: 4px;
 			background: #f2f2f2;
-			border: 1px solid #ccc;
+			border: 1px solid #cccccc;
 			outline: none;
-			margin-bottom: 20px;
+			padding: 0 10px;
+			margin: 0 32px 20px 32px;
+			@media (max-width: 600px) {
+				width: 200px;
+				font-size: 1.4rem;
+			}
 		}
 
-		& p {
-			font-size: 1.1rem;
+		& div.result {
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			gap: 6px;
 			height: 40px;
+			font-size: 1.6rem;
+			@media (max-width: 600px) {
+				font-size: 1.4rem;
+			}
 		}
 	}
 </style>

@@ -7,7 +7,7 @@
 <style>
 	.loader {
 		display: flex;
-		align-items: flex-end;
+		align-items: center;
 		justify-content: center;
 		height: 40px;
 	}
